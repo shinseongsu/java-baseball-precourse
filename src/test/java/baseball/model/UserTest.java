@@ -1,5 +1,6 @@
 package baseball.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,12 +11,13 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 public class UserTest {
 
+    private User user;
+
     @Test
     @DisplayName("정상된 입력값을 받았을 떄 테스트")
     void 입력값_테스트() {
         String number = "123";
-
-        User user = new User(number);
+        user = new User(number);
 
         assertThat(user.getNumber()).isEqualTo(number);
     }
@@ -27,7 +29,7 @@ public class UserTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
-                    User user = new User(number);
+                    user = new User(number);
                 }).withMessage("빈 값을 입력하였습니다.");
     }
     
@@ -37,7 +39,7 @@ public class UserTest {
     void 입력값_자릿수_예외_테스트(String number) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
-                    User user = new User(number);
+                    user = new User(number);
                 }).withMessage("3자리 숫자만 입력이 가능합니다.");
     }
     
@@ -47,7 +49,7 @@ public class UserTest {
     void 입력값_중_0_예외_테스트(String number) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
-                    User user = new User(number);
+                    user = new User(number);
                 }).withMessage("1~9가 아닌값이 들어왔습니다.");
     }
     
@@ -57,7 +59,7 @@ public class UserTest {
     void 중복된_값_예외_테스트(String number) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> {
-                    User user = new User(number);
+                    user = new User(number);
                 }).withMessage("중복된 값은 입력할 수 없습니다.");
     }
     

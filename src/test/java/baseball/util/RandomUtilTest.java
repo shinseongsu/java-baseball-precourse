@@ -28,7 +28,7 @@ public class RandomUtilTest {
             set.add(String.valueOf(randomNumber.charAt(i)));
         }
 
-        // given
+        // then
         assertThat(set.size()).isEqualTo(3);
     }
 
@@ -39,12 +39,12 @@ public class RandomUtilTest {
         String[] strArr = number.split("");
         Set set = new HashSet();
 
-        // given
+        // when
         for(int i = 0 ; i < strArr.length ; i++) {
             set.add(strArr[i]);
         }
 
-        // when
+        // then
         assertThat(number.equals(RandomUtil.setOfString(set))).isEqualTo(result);
     }
 

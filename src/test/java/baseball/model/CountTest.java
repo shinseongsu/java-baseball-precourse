@@ -1,5 +1,6 @@
 package baseball.model;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,13 +11,17 @@ import static org.assertj.core.api.Assertions.*;
 
 public class CountTest {
 
+    private Count count;
+
+    @BeforeEach
+    void 세팅() {
+        count =new Count();
+    }
+
     @ParameterizedTest
     @CsvSource(value = {"123|136|1볼 1스트라이크", "145|589|1볼", "671|762|2볼", "713|713|3스트라이크"}, delimiter = '|')
     @DisplayName("스트라이크 볼 카운트 체크")
     void 스트라이크_볼_체크(String computerNumber, String countNumber, String answer) {
-        // given
-        Count count = new Count();
-
         // when
         String result = count.strikeOrBallCheck(computerNumber, countNumber);
 
@@ -28,9 +33,6 @@ public class CountTest {
     @Test
     @DisplayName("3 스트라이크시 결과값 확인")
     void 전부_스트라이크시_참_반환하는지_테스트() {
-        // given
-        Count count = new Count();
-
         // then
         for(int i = 0 ; i <= 2 ; i++) {
             count.increaseStrike();
@@ -46,7 +48,6 @@ public class CountTest {
     void 스트라이크_카운트가_있는지_테스트(int strikeCount) {
         // given
         String strike = "스트라이크";
-        Count count = new Count();
 
         // when
         for(int i = 0 ; i < strikeCount ; i++) {
@@ -65,7 +66,6 @@ public class CountTest {
         // given
         String ball = "볼";
         String empty = " ";
-        Count count = new Count();
 
         // when
         for(int i = 0 ; i < ballCount ; i++) {
@@ -80,8 +80,6 @@ public class CountTest {
     @Test
     @DisplayName("낫싱 테스트")
     void 낫싱_테스트() {
-        Count count = new Count();
-
         assertThat(count.answer()).isEqualTo("낫싱");
     }
 
