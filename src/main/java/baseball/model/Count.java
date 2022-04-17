@@ -1,5 +1,6 @@
 package baseball.model;
 
+import baseball.constant.BaseballConstant;
 import baseball.view.ResultView;
 
 public class Count {
@@ -33,7 +34,7 @@ public class Count {
 
     public boolean isFishied() {
         if(this.strike == 3) {
-            ResultView.answerResultAndEnter("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            ResultView.answerResultAndEnter(BaseballConstant.GAME_END);
             return true;
         }
         return false;
@@ -44,15 +45,17 @@ public class Count {
     }
 
     public String isBallCount() {
-        return this.ball > 0 ? this.ball + "볼 " : "";
+        return this.ball > 0 ? this.ball + BaseballConstant.BALL + BaseballConstant.SPACE
+                : BaseballConstant.EMPTY;
     }
 
     public String isStrike() {
-        return this.strike > 0 ? this.strike + "스트라이크" : "";
+        return this.strike > 0 ? this.strike + BaseballConstant.STRIKE
+                : BaseballConstant.EMPTY;
     }
 
     public String isNotthing(String result) {
-        return "".equals(result) ? "낫싱" : result;
+        return "".equals(result) ? BaseballConstant.NOTHING : result;
     }
 
 }
