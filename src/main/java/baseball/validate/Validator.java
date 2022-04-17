@@ -39,4 +39,10 @@ public class Validator {
         }
     }
 
+    public void isOneOrTwo(String answer) {
+        if(answer.matches("^[^1|2]*$"))  {
+            throw new IllegalArgumentException("1과 2 이외에 다른 값이 들어왔습니다.");
+        }
+    }
+
 }

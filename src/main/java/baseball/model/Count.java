@@ -33,7 +33,7 @@ public class Count {
 
     public boolean isFishied() {
         if(this.strike == 3) {
-            ResultView.answerResult("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
+            ResultView.answerResultAndEnter("3개의 숫자를 모두 맞히셨습니다! 게임 종료");
             return true;
         }
         return false;

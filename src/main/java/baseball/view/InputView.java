@@ -9,4 +9,9 @@ public class InputView {
         return Console.readLine();
     }
 
+    public static String inputOfRestart() {
+        ResultView.answerResult("게임을 새로 시작하려면 1, 종료하면 2를 입력해주세요.");
+        return Console.readLine();
+    }
+
 }

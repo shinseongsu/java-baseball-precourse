@@ -19,10 +19,10 @@ public class RandomUtilTest {
     @ValueSource(ints = {1, 2, 3, 4, 5, 6, 7, 8, 9 })
     @DisplayName("중복된 값이 있는지 확인합니다.")
     void 랜덤값_만들기() {
-        // when
+        // given
         String randomNumber = RandomUtil.create();
 
-        // then
+        // when
         Set<String> set = new HashSet<String>();
         for(int i = 0 ; i < randomNumber.length() ; i++) {
             set.add(String.valueOf(randomNumber.charAt(i)));
@@ -35,16 +35,16 @@ public class RandomUtilTest {
     @ParameterizedTest()
     @CsvSource(value = {"123|true", "171|false", "112|false", "311|false"}, delimiter = '|')
     void set값_파싱(String number, boolean result) {
-        // when
+        // given
         String[] strArr = number.split("");
         Set set = new HashSet();
 
-        // then
+        // given
         for(int i = 0 ; i < strArr.length ; i++) {
             set.add(strArr[i]);
         }
 
-        // given
+        // when
         assertThat(number.equals(RandomUtil.setOfString(set))).isEqualTo(result);
     }
 

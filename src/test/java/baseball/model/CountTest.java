@@ -14,13 +14,13 @@ public class CountTest {
     @CsvSource(value = {"123|136|1볼 1스트라이크", "145|589|1볼", "671|762|2볼", "713|713|3스트라이크"}, delimiter = '|')
     @DisplayName("스트라이크 볼 카운트 체크")
     void 스트라이크_볼_체크(String computerNumber, String countNumber, String answer) {
-        // when
+        // given
         Count count = new Count();
 
-        // then
+        // when
         String result = count.strikeOrBallCheck(computerNumber, countNumber);
 
-        // given
+        // then
         assertThat(answer).isEqualTo(answer);
 
     }
@@ -28,7 +28,7 @@ public class CountTest {
     @Test
     @DisplayName("3 스트라이크시 결과값 확인")
     void 전부_스트라이크시_참_반환하는지_테스트() {
-        // when
+        // given
         Count count = new Count();
 
         // then
@@ -36,7 +36,7 @@ public class CountTest {
             count.increaseStrike();
         }
 
-        // given
+        // when
         assertThat(count.isFishied()).isEqualTo(true);
     }
 
@@ -44,17 +44,17 @@ public class CountTest {
     @ValueSource(ints = { 0, 1, 2, 3 })
     @DisplayName("스트라이크가 몇개 있는지 확인")
     void 스트라이크_카운트가_있는지_테스트(int strikeCount) {
-        // when
+        // given
         String strike = "스트라이크";
         Count count = new Count();
 
-        // then
+        // when
         for(int i = 0 ; i < strikeCount ; i++) {
             count.increaseStrike();
         }
         String answer = strikeCount > 0 ? strikeCount + strike : "";
 
-        // given
+        // then
         assertThat( count.isStrike() ).isEqualTo(answer);
     }
     
@@ -62,18 +62,18 @@ public class CountTest {
     @ValueSource(ints = {0, 1, 2, 3})
     @DisplayName("볼이 몇개 있는지 확인")
     void 볼_카운트가_있는지_테스트(int ballCount) {
-        // when
+        // given
         String ball = "볼";
         String empty = " ";
         Count count = new Count();
 
-        // then
+        // when
         for(int i = 0 ; i < ballCount ; i++) {
             count.increaseBall();
         }
         String answer = ballCount > 0 ? ballCount + ball + empty : "";
 
-        // given
+        // then
         assertThat( count.isBallCount() ).isEqualTo(answer);
     }
 
