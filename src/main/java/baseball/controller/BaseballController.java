@@ -2,7 +2,9 @@ package baseball.controller;
 
 import baseball.model.Computer;
 import baseball.model.User;
+import baseball.validate.Validator;
 import baseball.view.InputView;
+
 
 public class BaseballController {
 
@@ -17,6 +19,7 @@ public class BaseballController {
     public void play(Computer computer) {
         // 실행
         User user = new User(InputView.inputofNumber());
+
     }
 
 }
